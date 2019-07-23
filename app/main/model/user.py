@@ -9,6 +9,7 @@ from ..config import key
 class User(db.Model):
     '''User Model for storing user details'''
     __tablename__ = 'user'
+    url = "https://test-bucket-xd.s3.us-east-2.amazonaws.com/images/image"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String(255), unique=True, nullable=False)
@@ -17,6 +18,7 @@ class User(db.Model):
     public_id = db.Column(db.String(100), unique=True)
     username = db.Column(db.String(50), unique=True)
     password_hash = db.Column(db.String(100))
+    profile_image = db.Column(db.String(255), nullable=False, unique=True, default="https://test-bucket-xd.s3.us-east-2.amazonaws.com/images/image")
 
     @property
     def password(self):
