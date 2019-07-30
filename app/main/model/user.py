@@ -18,7 +18,6 @@ class User(db.Model):
     public_id = db.Column(db.String(100), unique=True)
     username = db.Column(db.String(50), unique=True)
     password_hash = db.Column(db.String(100))
-    profile_image = db.Column(db.String(255), nullable=False, unique=True, default="https://test-bucket-xd.s3.us-east-2.amazonaws.com/images/image")
 
     @property
     def password(self):

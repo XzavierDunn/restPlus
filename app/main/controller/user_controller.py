@@ -2,7 +2,7 @@ from flask import request
 from flask_restplus import Resource
 
 from ..util.dto import UserDto
-from ..service.user_service import save_new_user, get_all_users, get_a_user, upload_image
+from ..service.user_service import save_new_user, get_all_users, get_a_user
 
 from ..util.decorator import admin_token_required, token_required
 
@@ -54,17 +54,3 @@ class User(Resource):
             api.abort(404)
         else:
             return user
-
-
-@api.route('/upload')
-class image(Resource):
-
-    @api.expect(parser)
-    @token_required
-    def get(self, file, user):
-        print(user.profile_img, '=========================')
-        file = user.profile_img
-        response_object = {
-            'file': file
-        }
-        return response_object, 200

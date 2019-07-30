@@ -72,9 +72,3 @@ def generate_token(user):
             'message': 'Some error occurred. please try again'
         }
         return response_object, 401
-
-
-def upload_image(file):
-    s3 = boto3.resource('s3')
-    s3.meta.client.upload_file(file, 'test-bucket-xd/images', 'images')
-    return 200
